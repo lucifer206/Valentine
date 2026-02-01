@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're breaking my heart! 😭</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffb6c1 50%, #ff69b4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            max-width: 600px;
+            width: 100%;
+            animation: shake-continuous 0.5s ease-in-out infinite;
+        }
+
+        @keyframes shake-continuous {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3rem;
+            color: #ff1493;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            line-height: 1.2;
+        }
+
+        .emoji {
+            font-size: 5rem;
+            animation: sob 0.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes sob {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 100px;
+        }
+
+        button {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 3rem;
+            padding: 35px 90px;
+            animation: mega-pulse 0.8s ease-in-out infinite;
+        }
+
+        @keyframes mega-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 40px rgba(255, 20, 147, 0.5);
+            }
+            50% { 
+                transform: scale(1.08);
+                box-shadow: 0 20px 60px rgba(255, 20, 147, 0.8);
+            }
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 25px 50px rgba(255, 20, 147, 0.9);
+        }
+
+        .no-btn {
+            background: white;
+            color: #ff1493;
+            border: 1px solid #ff69b4;
+            font-size: 0.6rem;
+            padding: 5px 15px;
+            position: absolute;
+        }
+
+        .no-btn:hover {
+            background: #fff0f5;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .yes-btn {
+                font-size: 2rem;
+                padding: 25px 60px;
+            }
+
+            .no-btn {
+                font-size: 0.5rem;
+                padding: 4px 12px;
+            }
+
+            .emoji {
+                font-size: 3rem;
+            }
+
+            .container {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You're breaking my heart! <span class="emoji">😭</span></h1>
+        <div class="button-container">
+            <button class="yes-btn" onclick="handleYes()">Yes</button>
+            <button class="no-btn" id="noBtn" onclick="handleNo()" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function handleYes() {
+            window.location.href = 'https://www.youtube.com/watch?v=gS6YjQdrIN8';
+        }
+
+        function handleNo() {
+            window.location.href = 'no-page-6.html';
+        }
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.button-container');
+            const containerRect = container.getBoundingClientRect();
+            
+            const maxX = containerRect.width - noBtn.offsetWidth;
+            const maxY = containerRect.height - noBtn.offsetHeight;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Initialize position
+        window.onload = function() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.style.left = '60%';
+            noBtn.style.top = '50%';
+        };
+    </script>
+</body>
+</html>
